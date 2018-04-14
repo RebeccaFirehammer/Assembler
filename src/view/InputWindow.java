@@ -5,9 +5,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import controller.Translator;
  
 @SuppressWarnings("serial")
 public class InputWindow extends JPanel implements ActionListener {
+	Translator translator;
     static private final String newline = "\n";
     JButton openButton;
     JTextArea log;
@@ -52,6 +55,11 @@ public class InputWindow extends JPanel implements ActionListener {
                 File file = fc.getSelectedFile();
                 //This is where a real application would open the file.
                 log.append("Opening: " + file.getName() + "." + newline);
+                try {
+					translator = new Translator(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
             } else {
                 log.append("Open command cancelled by user." + newline);
             }

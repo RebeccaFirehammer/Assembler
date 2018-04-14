@@ -1,15 +1,39 @@
-Mov R8,R8
-Mov R16,R16
-Mov R8,$HHHH
-Mov R16,[$MMMM]
-Mov [$MMMM],R8
-Mov [$MMMM],R16
-Mov R8,[R16]
-Mov R16,[R16]
-Mov [R16],R8
-Mov [R16],R16
-Mov R8,[$MMMM,R8]
-Mov R16,[$MMMM,R8]
-Mov [$MMMM,R8],R8
-Mov [$MMMM,R8],R8
-Mov [$MMMM,R8],R16
+80 Mov R8,R8 1000 0000
+81 Mov R8,$HH 1000 0001
+82 Mov R8,[$MMMM] 1000 0010
+83 Mov [$MMMM],R8 1000 0011
+10 Addc R8,R8
+11 Addc R8,$HH 
+12 Addc R8,[$MMMM]
+13 Addc [$MMMM],R8 
+20 Subb R8,R8
+21 Subb R8,$HH
+22 Subb R8,[$MMMM]
+23 Subb [$MMMM],R8 
+30 Cmp R8,R8
+31 Cmp R8,$HH
+32 Cmp R8,[$MMMM]
+33 Cmp [$MMMM],R8
+40 Not R8 
+43 Not [$MMMM]
+50 And R8,R8
+51 And R8,$HH
+52 And R8,[$MMMM]
+53 And [$MMMM],R8 
+60 Or R8,R8
+61 Or R8,$HH
+62 Or R8,[$MMMM]
+63 Or [$MMMM],R8 
+70 Xor R8,R8 
+71 Xor R8,$HH
+72 Xor R8,[$MMMM]
+73 Xor [$MMMM],R8 
+B8 jmp R16 
+B9 jmp $MMMM 
+D6 Jlo (jcs) C = 1 
+D7 Jhs (jcc) C = 0
+D8 Jeq (jzs) Z = 1
+D9 Jne (jzc) Z = 0
+DA Jmi (jss) S = 1
+DB Jpl (jsc) S = 0 
+E0 Nop 
