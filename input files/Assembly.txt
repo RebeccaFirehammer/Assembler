@@ -1,0 +1,15 @@
+Mov R8,R8
+Mov R16,R16
+Mov R8,$HHHH
+Mov R16,[$MMMM]
+Mov [$MMMM],R8
+Mov [$MMMM],R16
+Mov R8,[R16]
+Mov R16,[R16]
+Mov [R16],R8
+Mov [R16],R16
+Mov R8,[$MMMM,R8]
+Mov R16,[$MMMM,R8]
+Mov [$MMMM,R8],R8
+Mov [$MMMM,R8],R8
+Mov [$MMMM,R8],R16
