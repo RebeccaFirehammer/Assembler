@@ -1,0 +1,45 @@
+Mov R8,R8
+Mov R8,$HH
+Mov R8,[$MMMM]
+Mov [$MMMM],R8 1000 0011
+Addc R8,R8
+Addc R8,$HH 
+Addc R8,[$MMMM]
+Addc [$MMMM],R8 
+Subb R8,R8
+Subb R8,$HH
+Subb R8,[$MMMM]
+Subb [$MMMM],R8 
+Cmp R8,R8
+Cmp R8,$HH
+Cmp R8,[$MMMM]
+Cmp [$MMMM],R8
+Not R8 
+Not [$MMMM]
+And R8,R8
+And R8,$HH
+And R8,[$MMMM]
+And [$MMMM],R8 
+Or R8,R8
+Or R8,$HH
+Or R8,[$MMMM]
+Or [$MMMM],R8 
+Xor R8,R8 
+Xor R8,$HH
+Xor R8,[$MMMM]
+Xor [$MMMM],R8 
+jmp R16 
+jmp $MMMM 
+Jlo 
+jcs 
+Jhs 
+jcc
+Jeq 
+jzs
+Jne 
+jzc
+Jmi
+jss
+Jpl 
+jsc 
+Nop 
