@@ -2,9 +2,9 @@ package model;
 
 public class Instruction {
 	
-	String command;
-	String destination;
-	String source;
+	String command = "";
+	String destination = "";
+	String source = "";
 	
 	public Instruction(String command, String destination, String source) {
 		this.command = command;

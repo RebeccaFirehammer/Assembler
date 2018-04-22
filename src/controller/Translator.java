@@ -18,9 +18,6 @@ public class Translator{
 	private Instruction instruction;
 	private String opCode;
 	private static final String outFilename = "AssemblerOut.txt";
-	private static final int command = 0;
-	private static final int destination = 1;
-	private static final int source = 2;
 	
 	
 	public Translator(File input) throws IOException {
@@ -34,6 +31,7 @@ public class Translator{
 		output = new File(getOutputPath());
 		PrintWriter writer = new PrintWriter(output);
 		writer.print("");
+		String line;
 		for (Instruction instruction: instructions){
 			String command = instruction.getCommand();
 			String destination;
@@ -187,7 +185,8 @@ public class Translator{
 					break;
 					
 			}
-			writer.println(opCode);
+			line = createOut(opCode, instruction.getDestination(), instruction.getSource());
+			writer.println(line);
 		}
 		writer.close();
 	}
@@ -197,6 +196,25 @@ public class Translator{
 		outPath = outPath.replace(input.getName(), outFilename);
 		outPath = outPath.replace("\\", "\\\\");
 		return outPath;
+	}
+	
+	private String createOut(String code, String des, String src){
+		String line;
+		
+		des = des.replace("[|]", "");
+		des += " ";
+		des = des.substring(1);
+		des = des.trim();
+		
+		src = src.replace("[|]", "");
+		src += " ";
+		src = src.substring(1);
+		src = src.trim();
+		
+		line = code + " " + des + " " + src;
+		line = line.trim();
+		return line;
+		
 	}
 	
 	private void getInstructions() throws IOException {
