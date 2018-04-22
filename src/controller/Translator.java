@@ -183,6 +183,8 @@ public class Translator{
 				case "nop":
 					opCode = "E0";
 					break;
+				default:
+					opCode = "";
 					
 			}
 			line = createOut(opCode, instruction.getDestination(), instruction.getSource());
@@ -201,12 +203,14 @@ public class Translator{
 	private String createOut(String code, String des, String src){
 		String line;
 		
-		des = des.replace("[|]", "");
+		des = des.replace("[", "");
+		des = des.replace("]", "");
 		des += " ";
 		des = des.substring(1);
 		des = des.trim();
 		
-		src = src.replace("[|]", "");
+		src = src.replace("[", "");
+		src = src.replace("]", "");
 		src += " ";
 		src = src.substring(1);
 		src = src.trim();
