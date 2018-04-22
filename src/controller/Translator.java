@@ -18,6 +18,7 @@ public class Translator{
 	private static final int destination = 1;
 	private static final int source = 2;
 	
+	
 	public Translator(File input) throws IOException {
 		this.input = input;
 		instructions = new ArrayList<Instruction>();
