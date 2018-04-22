@@ -2,8 +2,11 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Instruction;
@@ -11,6 +14,8 @@ import model.Instruction;
 public class Translator{
 
 	private File input;
+	private File output;
+	private String outFilename = "AssemblerOut.txt";
 	private List <Instruction> instructions;
 	private Instruction instruction;
 	private String opCode;
@@ -26,7 +31,10 @@ public class Translator{
 		translateInstructions();
 	}
 	
-	private void translateInstructions() {
+	private void translateInstructions() throws FileNotFoundException {
+		output = new File(getOutputPath());
+		PrintWriter writer = new PrintWriter(output);
+		writer.print("");
 		for (Instruction instruction: instructions){
 			String command = instruction.getCommand();
 			String destination;
@@ -180,7 +188,17 @@ public class Translator{
 					break;
 					
 			}
+			writer.println(opCode);
 		}
+		writer.close();
+		System.out.println(input.getAbsolutePath());
+	}
+	
+	private String getOutputPath(){
+		String outPath = input.getAbsolutePath();
+		outPath = outPath.replace(input.getName(), outFilename);
+		outPath = outPath.replace("\\", "\\\\");
+		return outPath;
 	}
 	
 	private void getInstructions() throws IOException {
