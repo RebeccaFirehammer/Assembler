@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,10 +14,10 @@ public class Translator{
 
 	private File input;
 	private File output;
-	private String outFilename = "AssemblerOut.txt";
 	private List <Instruction> instructions;
 	private Instruction instruction;
 	private String opCode;
+	private static final String outFilename = "AssemblerOut.txt";
 	private static final int command = 0;
 	private static final int destination = 1;
 	private static final int source = 2;
@@ -191,7 +190,6 @@ public class Translator{
 			writer.println(opCode);
 		}
 		writer.close();
-		System.out.println(input.getAbsolutePath());
 	}
 	
 	private String getOutputPath(){
