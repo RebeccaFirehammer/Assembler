@@ -248,6 +248,7 @@ public class Translator{
 	private String cleanLine(String line) {
 		line = line.replace("\n", "");
 		line = line.replace(",", " ");
+		line = line.replaceAll(" +", " ");
 		line = line.trim();
 		return line;
 	}
